@@ -1,0 +1,9 @@
+docker run -d --name atom \
+          --env="DISPLAY" \
+          --volume="/etc/group:/etc/group:ro" \
+          --volume="/etc/passwd:/etc/passwd:ro" \
+          --volume="/etc/shadow:/etc/shadow:ro" \
+          --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+          --volume="/dev/shm:/dev/shm" \
+          --device="/dev/dri/card0" \
+          atom
