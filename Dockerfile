@@ -8,4 +8,4 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive \
     useradd -d /home/greg -m greg -s /bin/bash
 USER greg 
 ENV XDG_CONFIG_HOME=/home/greg/.config
-CMD ["atom","-f","--no-sandbox"]
+CMD ["/usr/bin/atom","-f","--no-sandbox"]

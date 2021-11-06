@@ -1,0 +1,36 @@
+---
+version: "3.8"
+services:
+  atomdocker:
+    image: gregnemeth/atomdocker:0.3.3
+    container_name: atom
+    build: .
+    environment:
+      DISPLAY:
+      XDG_CONFIG_HOME:
+    volumes:
+      - type: volume
+        source: .atom
+        target: /home/greg/.atom
+      - type: bind
+        source: /etc/group
+        target: /etc/group:ro
+      - type: bind
+        source: /etc/passwd
+        target: /etc/passwd:ro
+      - type: bind
+        source: /etc/shadow
+        target: /etc/shadow:ro
+      - type: bind
+        source: /tmp/.X11-unix
+        target: /tmp/.X11-unix:rw
+      - type: bind
+        source: /dev/shm
+        target: /dev/shm
+    devices:
+      - /dev/dri/card0:/dev/dri/card0
+    network_mode: host
+    
+volumes:
+  .atom:
+

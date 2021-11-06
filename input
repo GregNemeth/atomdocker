@@ -6,4 +6,4 @@ docker run -d --name atom \
           --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
           --volume="/dev/shm:/dev/shm" \
           --device="/dev/dri/card0" \
-          gregnemeth/atomdocker:0.3.2
+          gregnemeth/atomdocker:0.3.3
