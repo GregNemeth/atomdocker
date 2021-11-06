@@ -9,9 +9,9 @@ services:
       DISPLAY:
       XDG_CONFIG_HOME:
     volumes:
-      - type: volume
-        source: .atom
-        target: /home/greg/.atom
+      - type: bind
+        source: /home/greg/.atom
+        target: /home/greg/.atom:rw
       - type: bind
         source: /etc/group
         target: /etc/group:ro
@@ -31,6 +31,4 @@ services:
       - /dev/dri/card0:/dev/dri/card0
     network_mode: host
     
-volumes:
-  .atom:
 
