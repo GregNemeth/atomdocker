@@ -2,16 +2,21 @@
 version: "3.8"
 services:
   atomdocker:
-    image: gregnemeth/goatom:0.0.1
-    container_name: goatom
-    build: .
+    image: gregnemeth/atomdocker:0.3.4
+    container_name: goatomv2
     environment:
       DISPLAY:
       XDG_CONFIG_HOME:
     volumes:
       - type: volume
-        source: slashgo
+        source: gobins
+        target: /usr/local/go
+      - type: volume
+        source: go
         target: /go
+      - type: volume
+        source: home
+        target: /home
       - type: bind
         source: /etc/group
         target: /etc/group:ro
@@ -30,6 +35,22 @@ services:
     devices:
       - /dev/dri/card0:/dev/dri/card0
     network_mode: host
-    
+    depends_on:
+      - go_engine
+
+  go_engine:
+    image: gregnemeth/mygo
+    container_name: go_enginev2
+    volumes:
+      - type: volume
+        source: gobins
+        target: /usr/local/go
+      - type: volume
+        source: go
+        target: /go
+
 volumes:
-  slashgo:
+  go:
+  gobins:
+  home:    
+
